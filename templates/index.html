@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Router Config</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-gray-100">
+    <div class="max-w-4xl mx-auto py-10">
+        <h1 class="text-2xl font-bold text-center mb-5">Router Configuration</h1>
+        {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+        <div class="mb-4">
+            {% for category, message in messages %}
+            <div
+                class="p-4 rounded {{ 'bg-green-500 text-white' if category == 'success' else 'bg-red-500 text-white' }}">
+                {{ message }}
+            </div>
+            {% endfor %}
+        </div>
+        {% endif %}
+        {% endwith %}
+        <form action="/configure" method="POST" class="bg-white p-6 rounded shadow-md">
+            <div class="mb-4">
+                <label for="ip" class="block font-medium">Device IP Address:</label>
+                <input type="text" id="ip" name="ip" class="w-full border-gray-300 rounded p-2" required>
+            </div>
+            <div class="mb-4">
+                <label for="syslog_server_ip" class="block font-medium">Syslog Server IP:</label>
+                <input type="text" id="syslog_server_ip" name="syslog_server_ip"
+                    class="w-full border-gray-300 rounded p-2" required>
+            </div>
+            <div class="mb-4">
+                <label for="transport" class="block font-medium">Connection Method:</label>
+                <select id="transport" name="transport" class="w-full border-gray-300 rounded p-2" required>
+                    <option value="ssh">SSH</option>
+                    <option value="telnet">Telnet</option>
+                </select>
+            </div>
+            <div class="mb-4">
+                <label for="username" class="block font-medium">Username:</label>
+                <input type="text" id="username" name="username" class="w-full border-gray-300 rounded p-2" required>
+            </div>
+            <div class="mb-4">
+                <label for="password" class="block font-medium">Password:</label>
+                <input type="password" id="password" name="password" class="w-full border-gray-300 rounded p-2"
+                    required>
+            </div>
+            <div class="mb-4">
+                <label for="pre_shared_key" class="block font-medium">Pre-Shared Key:</label>
+                <input type="text" id="pre_shared_key" name="pre_shared_key" class="w-full border-gray-300 rounded p-2"
+                    required>
+            </div>
+            <div class="mb-4">
+                <label for="peer_ip" class="block font-medium">Peer IP Address:</label>
+                <input type="text" id="peer_ip" name="peer_ip" class="w-full border-gray-300 rounded p-2" required>
+            </div>
+            <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">Submit</button>
+        </form>
+    </div>
+</body>
+
+</html>
