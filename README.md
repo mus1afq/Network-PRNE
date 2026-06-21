@@ -58,17 +58,15 @@ python app.py                    # http://127.0.0.1:5000
 
 ## Testing without hardware
 
-No lab required. Cisco's DevNet Always-On Sandbox gives a real IOS XE device
-reachable over the internet, no reservation or VPN:
+Cisco's DevNet Sandbox provides IOS XE devices over the internet with no
+physical lab. Sign in at https://developer.cisco.com/sandbox.html, launch an
+"Always-On" sandbox, and use the host, username, and password shown in the
+Operation Hub.
 
-- Host: `sandbox-iosxe-latest-1.cisco.com`
-- Username: `admin`, password: `C1sco12345`
-- `device_type`: `cisco_xe`
-
-It is shared, so keep changes small and non-disruptive: edit interface
-descriptions, do not shut interfaces, change IPs, or touch the management
-interface or AAA. For destructive testing, reserve the "IOS XE on Cat 8K" lab
-for an isolated box.
+Note: the Always-On sandboxes use per-session credentials and keyboard-interactive
+SSH auth, which Netmiko's default password auth does not negotiate. Point the
+tool at a device that accepts password authentication, or use a reserved sandbox
+that issues standard credentials.
 
 To lab locally on Apple Silicon, run GNS3 inside an OrbStack x86 Linux machine
 and use IOSv or IOL images (ASAv, Catalyst 8000V and Nexus 9000v do not run on
