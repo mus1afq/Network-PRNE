@@ -1,0 +1,8 @@
+! Sample hardening guide for the compliance diff.
+! Adjust to match your own baseline.
+service password-encryption
+no service pad
+aaa authentication login default local
+exec-timeout 5 0
+logging host 10.10.20.5
+banner login ^Authorised access only^

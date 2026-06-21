@@ -1,0 +1,18 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+
+# Secrets and local config
+.env
+
+# Generated artefacts
+output/
+*.log
+session_log_*.txt
+running-config-*.txt
+running-config_*.txt
+routing-table_*.txt
+differences_*.txt
+hardening_diff_*.txt
